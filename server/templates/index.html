@@ -5,8 +5,7 @@
     <script type="text/javascript" charset="utf-8">
         var socket = io();
         socket.on('connect', async function() {
-            var response = await socket.emitWithAck('hello', {data: 'world!'});
-            document.body.innerText = response;
+            await socket.emitWithAck('hello', {data: 'world!'});
         });
         </script>
 </body>
