@@ -2,11 +2,24 @@
 <html>
 <body>
     <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+    <h4>Canvas</h4>
+    <canvas id="turtlecanvas" width="600" height="600" style="border: 1px solid gray;"></canvas>
+    <canvas id="imagecanvas" width="600" height="600" style="display:none"></canvas>
+    <script src="https://raw.githack.com/bjpop/js-turtle/master/turtle.js"></script>
     <script type="text/javascript" charset="utf-8">
         var socket = io();
-        socket.on('connect', async function() {
-            await socket.emitWithAck('hello', {data: 'world!'});
+        socket.on('move', function(speed) {
+            console.log(`forward(${speed})`)
+            forward(speed)
         });
-        </script>
+        socket.on('left', function(angle) {
+            console.log(`left(${angle})`)
+            left(angle)
+        });
+        socket.on('right', function(angle) {
+            console.log(`right(${angle})`)
+            right(angle)
+        });
+    </script>
 </body>
 </html>

@@ -2,11 +2,14 @@ import asyncio
 import remote_turtle
 
 async def main():
-    t = remote_turtle.RemoteTurtle()
+    t = remote_turtle.RemoteTurtle("tkilla")
     await t.connect()
-    await t.forward()
-    await t.right()
-    await t.forward()
+    await t.straight("faster")
+    await t.right("faster")
+    await t.left("faster")
+    await t.straight("slower")
+    await t.straight("slower")
+    await t.straight("slower")
     await t.wait()
 
 asyncio.run(main())
